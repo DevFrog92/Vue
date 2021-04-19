@@ -1,0 +1,2 @@
+webpackJsonp([2],{ua3t:function(e,t,s){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n={created:function(){console.log("this is rest page")}},i={render:function(){var e=this.$createElement;return(this._self._c||e)("div",[this._v("this is test page")])},staticRenderFns:[]},r=s("VU/8")(n,i,!1,null,null,null);t.default=r.exports}});
+//# sourceMappingURL=2.6228e21ad6f0093cfc85.js.map
