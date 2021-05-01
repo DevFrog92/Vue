@@ -36,11 +36,6 @@ export const router = new VueRouter({
       component: () => import("@/views/Chat.vue"),
     },
     {
-      path: "/demo",
-      name: "Demo",
-      component: () => import("@/Demo/main.vue"),
-    },
-    {
       path: "*",
       redirect: "/",
     },
