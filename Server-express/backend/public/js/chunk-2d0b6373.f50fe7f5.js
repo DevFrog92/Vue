@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0b6373"],{"1be1":function(e,t,n){"use strict";n.r(t);var a=function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"video-chat-wrapper"},[e._v("video")])},r=[],c={name:"ServerExpressVideochat",data:function(){return{}},mounted:function(){},methods:{}},o=c,s=n("2877"),i=Object(s["a"])(o,a,r,!1,null,"5d990ab2",null);t["default"]=i.exports}}]);
+//# sourceMappingURL=chunk-2d0b6373.f50fe7f5.js.map

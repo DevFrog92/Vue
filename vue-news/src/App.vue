@@ -1,0 +1,47 @@
+<template>
+  <div id="app">
+    <tool-bar></tool-bar>
+    <transition name="fade">
+      <router-view></router-view>
+    </transition>
+  </div>
+</template>
+
+<script>
+import ToolBar from "@/components/ToolBar";
+export default {
+  name: "App",
+  components: { ToolBar },
+};
+</script>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: none;
+}
+
+a {
+  color: #34495e;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #42b883;
+  text-decoration: underline;
+  transition: all 0.2s;
+}
+
+a.router-link-exact-active {
+  text-decoration: underline;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+</style>
