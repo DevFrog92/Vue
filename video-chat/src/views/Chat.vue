@@ -2,21 +2,27 @@
   <div class="container-fluid mt-4">
     <div class="mb-3">
       <span class="mb-0 h2 text-primary">{{ roomName }}</span>
-      <span class="ml-1" v-if="user && user.uid !== hostID">
+      <span class="ml-1" v-if="user && user.uid !== hostId">
         Hosted by: <strong class="text-danger">{{ hostDisplayName }}</strong>
       </span>
     </div>
-    <div class="row" v-if="(user && user.uid == hostID) || attendeeApproved">
+    <div class="row" v-if="(user && user.uid == hostId) || attendeeApproved">
       <div class="col-md-8">
-        <vue-webrtc
-          ref="webrtc"
-          width="100%"
-          :roomId="roomID"
-          v-on:join-room="doAttendeeJoined"
-          v-on:left-room="doAttendeeLeft"
-        />
+        <vue-webrtc ref="webrtc"
+                      width="100%"
+                      :roomId="roomId"
+                      v-on:joined-room="logEvent"
+                      v-on:left-room="logEvent"
+                      v-on:opened-room="logEvent"
+                      v-on:share-started="logEvent"
+                      v-on:share-stopped="logEvent"
+                      @error="onError" />
       </div>
       <div class="col-md-4">
+         <button type="button" class="btn btn-primary" @click="onJoin">Join</button>
+            <button type="button" class="btn btn-primary" @click="onLeave">Leave</button>
+            <button type="button" class="btn btn-primary" @click="onCapture">Capture Photo</button>
+            <button type="button" class="btn btn-primary" @click="onShareScreen">Share Screen</button>
         <button
           v-if="!attendeeJoined && attendeeApproved"
           class="btn btn-primary mr-1"
@@ -40,7 +46,7 @@
               class="mr-2"
               title="Approve attendee"
               @click="toggleApproval(attendee.id)"
-              v-if="user && user.uid == hostID"
+              v-if="user && user.uid == hostId"
             >
               <font-awesome-icon icon="user"></font-awesome-icon>
             </a>
@@ -61,7 +67,7 @@
             >
           </li>
         </ul>
-        <div v-if="user && user.uid == hostID">
+        <div v-if="user && user.uid == hostId">
           <h5 class="mt-4">Pending</h5>
           <ul class="list-unstyled">
             <li
@@ -113,8 +119,8 @@ import db from "../db";
 export default {
   data: function () {
     return {
-      hostID: this.$route.params.hostID,
-      roomID: this.$route.params.roomID,
+      hostId: this.$route.params.hostID,
+      roomId: this.$route.params.roomID,
       roomName: null,
       hostDisplayName: null,
       attendeesPendingArr: [],
@@ -127,13 +133,16 @@ export default {
     FontAwesomeIcon,
   },
   methods: {
+    log(event){
+      console.log('log',event)
+    },
     toggleApproval: function (attendeeID) {
-      if (this.user && this.user.uid == this.hostID) {
+      if (this.user && this.user.uid == this.hostId) {
         const ref = db
           .collection("users")
           .doc(this.user.uid)
           .collection("rooms")
-          .doc(this.roomID)
+          .doc(this.roomId)
           .collection("attendees")
           .doc(attendeeID);
 
@@ -153,18 +162,20 @@ export default {
       }
     },
     deleteAttendee: function (attendeeID) {
-      if (this.user && this.user.uid == this.hostID) {
+      if (this.user && this.user.uid == this.hostId) {
         db.collection("users")
           .doc(this.user.uid)
           .collection("rooms")
-          .doc(this.roomID)
+          .doc(this.roomId)
           .collection("attendees")
           .doc(attendeeID)
           .delete();
       }
     },
     doJoin() {
-      this.$refs.webrtc.join();
+      console.log('do join',document.querySelector('.video-list').join())
+      console.log('web rtc', this.$refs.webrtc.join())
+      this.$refs.webrtc.join()
       this.attendeeJoined = true;
       
     },
@@ -176,9 +187,9 @@ export default {
       console.log("join");
       const ref = db
         .collection("users")
-        .doc(this.hostID)
+        .doc(this.hostId)
         .collection("rooms")
-        .doc(this.roomID)
+        .doc(this.roomId)
         .collection("attendees")
         .doc(this.user.uid);
       ref.update({
@@ -189,15 +200,37 @@ export default {
       console.log("left");
       const ref = db
         .collection("users")
-        .doc(this.hostID)
+        .doc(this.hostId)
         .collection("rooms")
-        .doc(this.roomID)
+        .doc(this.roomId)
         .collection("attendees")
         .doc(this.user.uid);
       ref.update({
         webRTCID: null,
       });
     },
+    // 
+    onCapture() {
+        this.img = this.$refs.webrtc.capture();
+      },
+      onJoin() {
+        this.$refs.webrtc.join();
+        console.log('join')
+      },
+      onLeave() {
+        this.$refs.webrtc.leave();
+        console.log('leave')
+
+      },
+      onShareScreen() {
+        this.img = this.$refs.webrtc.shareScreen();
+      },
+      onError(error, stream) {
+        console.log('On Error Event', error, stream);
+      },
+      logEvent(event) {
+        console.log('Event : ', event);
+      },
   },
   props: ["user"],
   mounted() {
@@ -218,7 +251,7 @@ export default {
       let tempApproved = [];
       snapShot.forEach((attendeeDoc) => {
         //Host Display Name
-        if (this.hostID === attendeeDoc.id) {
+        if (this.hostId === attendeeDoc.id) {
           this.hostDisplayName = attendeeDoc.data().displayName;
         }
         //Cheking If User Checked In
@@ -250,7 +283,7 @@ export default {
         }
       });
       if (!userCheckedIn) {
-        this.$router.push(`/checkin/${this.hostID}/${this.roomID}`);
+        this.$router.push(`/checkin/${this.hostId}/${this.roomId}`);
       }
       this.attendeesPendingArr = tempPendeing;
       this.attendeesApprovedArr = tempApproved;
