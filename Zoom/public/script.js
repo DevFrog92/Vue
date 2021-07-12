@@ -50,6 +50,8 @@ var peer = new Peer({
 let myVideoStream;
 let currentUserId;
 let pendingMsg = 0;
+
+
 let peers = {};
 var getUserMedia =
   navigator.getUserMedia ||
@@ -59,7 +61,11 @@ var getUserMedia =
 navigator.mediaDevices
   .getUserMedia({ audio: true, video: true })
   .then((stream) => {
+
+
     myVideoStream = stream;
+
+
     addVideoStream(myVideo, stream, "me");
 
     peer.on("call", (call) => {
@@ -78,7 +84,7 @@ navigator.mediaDevices
 
     socket.on("user-disconnected", (userId) => {
       if (peers[userId]) peers[userId].close();
-      speakText(`user ${userId} leaved`);
+      // speakText(`user ${userId} leaved`);
     });
 
     document.addEventListener("keydown", (e) => {
