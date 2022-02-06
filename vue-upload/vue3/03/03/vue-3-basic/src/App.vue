@@ -1,13 +1,27 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
+    <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + Vite" />
+  <DataBinding />
+  <Computed ref="computed" />
 </template>
+
+<script>
+import HelloWorld from './components/HelloWorld.vue'
+import DataBinding from "./components/DataBinding.vue"
+import Computed from "./components/Computed.vue"
+
+export default {
+  components:{
+    HelloWorld,
+    DataBinding,
+    Computed
+  },
+  mounted(){
+    console.log(this.$refs.computed)
+    console.log(this.$refs.computed.$el)
+  }
+}
+</script>
 
 <style>
 #app {
