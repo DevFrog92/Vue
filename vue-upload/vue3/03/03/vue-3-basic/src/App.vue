@@ -1,24 +1,21 @@
 <template>
     <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + Vite" />
-  <DataBinding />
-  <Computed ref="computed" />
+  <Watch/>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import DataBinding from "./components/DataBinding.vue"
-import Computed from "./components/Computed.vue"
+import Watch from "./components/Watch.vue"
 
 export default {
   components:{
     HelloWorld,
-    DataBinding,
-    Computed
+    Watch
   },
   mounted(){
-    console.log(this.$refs.computed)
-    console.log(this.$refs.computed.$el)
+    // console.log(this.$refs.computed)
+    // console.log(this.$refs.computed.$el)
   }
 }
 </script>
