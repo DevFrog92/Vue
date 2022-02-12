@@ -6,10 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vue.js advance</title>
   <script src="https://unpkg.com/vue@2.5.17"></script>
+  <style>
+    * {
+      margin: 0;
+    }
+
+    #app {
+      background-color: #333;
+      width: 100vw;
+      height: 100vh;
+      padding: 1rem;
+    }
+
+    .container {
+      padding: 1rem;
+    }
+  </style>
 </head>
 <body>
   <div id="app">
-    <div v-bind:style="errorMessageStyle">
+    <div class="container" v-bind:style="errorMessageStyle">
+      <ul>
+        <li v-for="(item, index) in items" :key="item.name">
+          {{ item.name }}: {{ item.price}} x {{ item.quantity}} = {{ item.price * item.quantity | numberWithDelimiter}}
+        </li>
+      </ul>
       <p>
         {{ items[0].name }}: {{ items[0].price}} x {{ items[0].quantity}}
       </p>

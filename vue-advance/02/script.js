@@ -40,8 +40,8 @@ const vm = new Vue({
     },
     errorMessageStyle(){
       return {
-        border: this.canBuy ? "" : '1px solid red',
-        color: this.canBuy ? "" : "red"
+        border: this.canBuy ? "" : '1px solid yellow',
+        color: this.canBuy ? "" : "yellow"
       }
     }
   },
