@@ -56,6 +56,14 @@ const vm = new Vue({
 
       return value.toString().replace(/(\d)(?=(\d{3})+$)/g,'$1,')
     }
+  },
+  methods: {
+    doBuy:function () {
+      alert(this.totalPriceWithTax + '원 판매됨!')
+      this.items.forEach(function(item) {
+        item.quantity = 0
+      })
+    }
   }
 });
 

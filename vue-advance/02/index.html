@@ -49,7 +49,7 @@
       <p v-show="!canBuy">
         {{ 1000 | numberWithDelimiter }}원 이상부터 구매 가능
       </p>
-      <button id="b-button" v-bind:title="loggedInButton">구매</button>
+      <button id="b-button" v-bind:title="loggedInButton" v-bind:disable="!canBuy" v-on:click="doBuy">구매</button>
     </div>
   </div>
 
