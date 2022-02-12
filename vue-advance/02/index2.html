@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@2.5.17"></script>
+</head>
+<body>
+  <div id="app">
+    {{ count }}
+  </div>
+
+  <script>
+    console.assert(typeof Vue !== 'undefined');
+
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        count: 0,
+        timerId: null
+      },
+      created: function() {
+        console.log('created', this)
+        const that = this
+        this.timerId = setInterval(function() {
+          that.count += 1
+        },1000)
+      },
+      mounted: function() {
+        console.log("mounted")
+        console.log(this.$el)
+      },
+      beforeDestroy(){
+        console.log("beforeDestroy")
+        clearInterval(this.timerId)
+      }
+    })
+
+  </script>
+</body>
+</html>
