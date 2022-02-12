@@ -12,7 +12,8 @@ const vm = new Vue({
   el: "#app",
   data: {
     items: items,
-    loggedInButton: "로그인 후에 구매 가능합니다."
+    loggedInButton: "로그인 후에 구매 가능합니다.",
+    isTrue: true,
   },
   computed: {
     // numberWithDelimiter: function() {
@@ -30,7 +31,22 @@ const vm = new Vue({
     totalPriceWithTax() {
       // ES5
       return Math.floor(this.totalPrice * 1.10)
+    },
+    canBuy(){
+      return this.totalPrice >= 1000
+    },
+    errorMessageClass(){
+      return !this.canBuy
+    },
+    errorMessageStyle(){
+      return {
+        border: this.canBuy ? "" : '1px solid red',
+        color: this.canBuy ? "" : "red"
+      }
     }
+  },
+  created(){
+    console.log(this.errorMessageStyle)
   },
   filters:{
     numberWithDelimiter: function(value) {
@@ -42,3 +58,5 @@ const vm = new Vue({
     }
   }
 });
+
+window.vm = vm;

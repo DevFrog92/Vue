@@ -9,16 +9,21 @@
 </head>
 <body>
   <div id="app">
-    <p>
-      {{ items[0].name }}: {{ items[0].price}} x {{ items[0].quantity}}
-    </p>
-    <p>
-      소계: {{ totalPrice | numberWithDelimiter }}
-    </p>
-    <p>
-      합계(세포함): {{ totalPriceWithTax | numberWithDelimiter }}
-    </p>
-    <button id="b-button" v-bind:title="loggedInButton">구매</button>
+    <div v-bind:style="errorMessageStyle">
+      <p>
+        {{ items[0].name }}: {{ items[0].price}} x {{ items[0].quantity}}
+      </p>
+      <p>
+        소계: {{ totalPrice | numberWithDelimiter }}
+      </p>
+      <p>
+        합계(세포함): {{ totalPriceWithTax | numberWithDelimiter }}
+      </p>
+      <p v-show="!canBuy">
+        {{ 1000 | numberWithDelimiter }}원 이상부터 구매 가능
+      </p>
+      <button id="b-button" v-bind:title="loggedInButton">구매</button>
+    </div>
   </div>
 
   <script src="script.js" defer></script>
