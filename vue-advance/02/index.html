@@ -27,7 +27,7 @@
   <div id="app">
     <ul>
       <li v-for="item in items" :key="item.name">
-        {{item.name}}의 개수: <input type="number" v-on:change="item.quantity = $event.target.value" v-bind:value="item.quantity" min="0">
+        {{item.name}}의 개수: <input type="number" v-model.number.lazy="item.quantity" min="0">
       </li>
     </ul>
     <hr>
