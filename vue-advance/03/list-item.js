@@ -1,4 +1,4 @@
-// component
+// component(global)
 Vue.component('list-item', {
   template: "<li>foo: {{ contents }}</li>",
   data: function(){
@@ -10,5 +10,11 @@ Vue.component('list-item', {
 
 // root
 new Vue({
-  el: "#example"
+  el: "#example",
+  // component(local)
+  components: {
+    "list-item-title": {
+      template: "<h1>hello</h1>"
+    }
+  }
 })
