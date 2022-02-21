@@ -5,15 +5,26 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vue router install</title>
-  <script src="https://unpkg.com/vue@2.5.17"></script>
-  <script src="https://unpkg.com/vue-router@3.0.1"></script>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <div id="app">
-    <router-link to="/top">top</router-link>
-    <router-link to="/users">users</router-link>
+    <nav v-cloak>
+      <router-link to="/top">top</router-link>
+      <router-link to="/users">users</router-link>
+      <router-link to="/user/new?redirect=true">user create</router-link>
+      <router-link to="/login" v-show="!isLoggedIn">login</router-link>
+      <router-link to="/logout" v-show="isLoggedIn">logout</router-link>
+    </nav>
     <router-view></router-view>
   </div>
+
+  <script src="https://unpkg.com/vue@2.5.17"></script>
+  <script src="https://unpkg.com/vue-router@3.0.1"></script>
 
   <script type="text/x-template" id="user-list">
     <div>
@@ -69,7 +80,45 @@
     </div>
   </script>
 
+  <script type="text/x-template" id="login">
+    <div>
+      <h2>Login</h2>
+      <p v-if="$route.query.redirect">
+        로그인이 필요합니다.
+      </p>
+      <form @submit.prevent="login">
+        <label ><input v-model="email" type="email" placeholder="email"></label>
+        <label ><input v-model="pass" type="password" placeholder="password"></label>
+        <button type="submit">로그인</button>
+        <p v-if="error" class="error">로그인에 실패했습니다.</p>
+      </form>
+    </div>
+  </script>
+
   <script>
+    const Auth = {
+      login: function(email, pass, cb) {
+        setTimeout(function(){
+          if(email === "test@test.test" || pass === "qwer") {
+            localStorage.token = Math.random().toString(36).substring(7)
+            if(cb) {
+              cb(true)
+            }
+          }else {
+            if(cb) {
+              cb(false)
+            }
+          }
+        }, 0)
+      },
+      logout: function() {
+        delete localStorage.token
+      },
+      loggedIn: function() {
+        return !!localStorage.token
+      }
+    }
+
     const userData = [
       {
         id: 1,
@@ -105,29 +154,6 @@
         userData.push(params)
         callback(null, params)
       }, 1000)
-    }
-
-    const Auth = {
-      login: function(email, pass, cb) {
-        setTimeout(function(){
-          if(email === "test@test.test" || pass === "qwer") {
-            localStorage.token = Math.random().toString(36).substring(7)
-            if(cb) {
-              cb(true)
-            }
-          }else {
-            if(cb) {
-              cb(false)
-            }
-          }
-        }, 0)
-      },
-      logout: function() {
-        delete localStorage.token
-      },
-      loggedIn: function() {
-        return !!localStorage.token
-      }
     }
 
     const UserCreate = {
@@ -236,6 +262,34 @@
       }
     }
 
+    const Login = {
+      template: "#login",
+      data: function() {
+        return {
+          email: "test@test.test",
+          pass: "",
+          error: false
+        }
+      },
+      computed:{
+        isLoggedIn(){
+          return Auth.loggedIn()
+        }
+      },
+      methods: {
+        login: function() {
+          Auth.login(this.email, this.pass, (function(loggedIn) {
+            if(!loggedIn) {
+              this.error = true
+            }else {
+              // redirect 후 로그인 페이지에 대한 history를 새 엔트리에 추가하지 않음
+              this.$router.replace(this.$route.query.redirect || '/')
+            }
+          }).bind(this))
+        }
+      }
+    }
+
     const router = new VueRouter({
       routes: [
         {
@@ -250,12 +304,36 @@
         },
         {
           path: "/user/new",
-          component: UserCreate
+          component: UserCreate,
+          beforeEnter: function(to, from, next) {
+            if(!Auth.loggedIn()){
+              console.log("loggedIn false", to.fullPath)
+              next({
+                path: '/login',
+                query: {
+                  redirect: to.fullPath
+                }
+              })
+            }else {
+              next()
+            }
+          }
         },
         {
           path: "/user/:userid",
           name:"User",
           component: UserDetail
+        },
+        {
+          path: "/login",
+          component: Login
+        },
+        {
+          path: "/logout",
+          beforeEnter: function(to, from, next) {
+            Auth.logout()
+            next('/')
+          }
         }
       ]
     })
