@@ -44,6 +44,31 @@
     </div>
   </script>
 
+  <script type="text/x-template" id="user-create">
+    <div>
+      <div class="sending" v-if="sending">
+        Sending...
+      </div>
+      <div>
+        <h2>신규 사용자 등록</h2>
+        <div>
+          <label>이름: </label>
+          <input type="text" v-model="user.name">
+        </div>
+        <div>
+          <label>설명: </label>
+          <input type="text" v-model="user.description">
+        </div>
+        <div v-if="error" class="error">
+          {{ error }}
+        </div>
+        <div>
+          <input type="button" value="등록" @click="createUser">
+        </div>
+      </div>
+    </div>
+  </script>
+
   <script>
     const userData = [
       {
@@ -72,6 +97,82 @@
 
         callback(null, filteredUsers && filteredUsers[0])
       }, 1000)
+    }
+
+    const postUser = function(params, callback) {
+      setTimeout(function() {
+        params.id = userData.length + 1
+        userData.push(params)
+        callback(null, params)
+      }, 1000)
+    }
+
+    const Auth = {
+      login: function(email, pass, cb) {
+        setTimeout(function(){
+          if(email === "test@test.test" || pass === "qwer") {
+            localStorage.token = Math.random().toString(36).substring(7)
+            if(cb) {
+              cb(true)
+            }
+          }else {
+            if(cb) {
+              cb(false)
+            }
+          }
+        }, 0)
+      },
+      logout: function() {
+        delete localStorage.token
+      },
+      loggedIn: function() {
+        return !!localStorage.token
+      }
+    }
+
+    const UserCreate = {
+      template: "#user-create",
+      data: function() {
+        return {
+          sending: false,
+          error: null,
+          user: this.defaultUser()
+        }
+      },
+      created: function() {
+
+      },
+      methods: {
+        defaultUser: function() {
+          return {
+            name: "",
+            description: ""
+          }
+        },
+        createUser: function() {
+          if(this.user.name.trim() === '') {
+            this.error = "Name is essential!"
+            return
+          }
+
+          if(this.user.description.trim() === '') {
+            this.error = "Description is essential!"
+            return
+          }
+
+          postUser(this.user, (function(err,user){
+            this.sending = false
+            if(err) {
+              this.error = err.toString
+            }else {
+              this.error = null
+              this.user = this.defaultUser()
+              alert("신규 사용자가 등록되었습니다.")
+              this.$router.push('/users')
+            }
+          }).bind(this))
+        }
+      }
     }
 
     const UserList = {
@@ -146,6 +247,10 @@
         {
           path: "/users",
           component: UserList
+        },
+        {
+          path: "/user/new",
+          component: UserCreate
         },
         {
           path: "/user/:userid",
