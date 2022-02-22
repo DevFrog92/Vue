@@ -166,7 +166,7 @@
         }
       },
       created: function() {
-
+        console.log('UserCreate',this.error)
       },
       methods: {
         defaultUser: function() {
@@ -176,6 +176,7 @@
           }
         },
         createUser: function() {
+          console.log(this.user)
           if(this.user.name.trim() === '') {
             this.error = "Name is essential!"
             return

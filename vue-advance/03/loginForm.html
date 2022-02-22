@@ -36,9 +36,12 @@
       template:"#login-template",
       data: function() {
         return {
-          userid: "",
+          userid: "hello",
           password: ""
         }
+      },
+      created: function() {
+        console.log('loginForm', this.userid,this)
       },
       methods: {
         login: function() {
