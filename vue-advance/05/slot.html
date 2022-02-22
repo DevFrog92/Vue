@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@2.5.17"></script>
+  <title>slot</title>
+</head>
+<body>
+  <div id="app">
+    <my-button>전송</my-button>
+    <my-button></my-button>
+    <modal>
+      <h1 slot="header">This is header title</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur dolores esse deserunt praesentium adipisci deleniti mollitia unde optio voluptate id?
+      </p>
+      <p>hello</p>
+      <p slot="footer">This is footer</p>
+    </modal>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
