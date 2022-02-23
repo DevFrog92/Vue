@@ -23,7 +23,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$refs.crop)
     this.cropper = new Cropper(this.$refs.crop, {
       viewMode: 3,
       aspectRatio: 1,
