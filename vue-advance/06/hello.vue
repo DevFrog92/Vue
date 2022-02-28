@@ -1,5 +1,5 @@
 <template>
-  <p class="message">{{msg}}</p>
+  <p :class="$style.message">{{msg}}</p>
 </template>
 
 <script>
@@ -8,6 +8,9 @@ export default {
     return  {
       msg: "This is vue component"
     }
+  },
+  created(){
+    console.log(`css modules: ${this.$style}`)
   }
 }
 </script>
