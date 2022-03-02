@@ -13,7 +13,7 @@ const store = new Vuex.Store({
       },
       {
         id: 2,
-        name: 'Study meeting',
+        name: "Typescript study",
         done: true
       }
     ]
