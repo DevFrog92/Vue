@@ -4,7 +4,20 @@ import Vuex from "vuex"
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-
+  state: {
+    tasks: [
+      {
+        id: 1,
+        name: "Javascript study",
+        done: false
+      },
+      {
+        id: 2,
+        name: 'Study meeting',
+        done: true
+      }
+    ]
+  }
 })
 
 export default store
