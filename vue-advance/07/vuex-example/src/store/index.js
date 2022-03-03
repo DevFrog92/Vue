@@ -3,6 +3,7 @@ import Vuex from "vuex"
 
 Vue.use(Vuex)
 
+// module화가 필요
 const store = new Vuex.Store({
   state: {
     tasks: [
