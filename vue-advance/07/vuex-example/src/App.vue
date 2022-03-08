@@ -37,6 +37,11 @@
     <form @submit.prevent="addLabel">
       <input type="text" v-model="newLabelText" placeholder="new label">
     </form>
+    <h2>
+      save and restore
+    </h2>
+    <button type="button" @click="restore">restore</button>
+    <button type="button" @click="save">save</button>
   </div>
 </template>
 
@@ -92,6 +97,12 @@ export default {
         filter:
         labelId
       })
+    },
+    save(){
+      this.$store.dispatch('save')
+    },
+    restore(){
+      this.$store.dispatch('restore')
     }
   }
 }
