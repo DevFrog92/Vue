@@ -42,6 +42,7 @@
     </h2>
     <button type="button" @click="restore">restore</button>
     <button type="button" @click="save">save</button>
+    <button type="button" @click="callModule">call module</button>
   </div>
 </template>
 
@@ -103,6 +104,9 @@ export default {
     },
     restore(){
       this.$store.dispatch('restore')
+    },
+    callModule(){
+      this.$store.dispatch('log')
     }
   }
 }

@@ -5,6 +5,28 @@ Vue.use(Vuex)
 
 // module화가 필요
 const store = new Vuex.Store({
+  modules: {
+    foo: {
+      state: {
+        value: "123"
+      },
+      actions: {
+        log(ctx){
+          console.log('foo',ctx.state)
+        }
+      }
+    },
+    bar: {
+      state: {
+        value: "123"
+      },
+      actions: {
+        log(ctx){
+          console.log('bar',ctx.state)
+        }
+      }
+    }
+  },
   state: {
     tasks: [
       {
