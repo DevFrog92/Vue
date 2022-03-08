@@ -14,6 +14,17 @@
     <form @submit.prevent="addTask">
       <input type="text" v-model="newTaskName" placeholder="new task name">
     </form>
+    <h2>Filtering by label</h2>
+    <ul>
+      <li v-for="label in labels" :key="label.id">
+        <input type="radio" :checked="label.id === filter" @change="changeFilter(label.id)">
+        {{ label.text }}
+      </li>
+      <li>
+        <input type="radio" :checked="filter === null" @change="changeFilter(null)">
+        no filtering
+      </li>
+    </ul>
 
     <h2>Label list</h2>
     <ul>
@@ -41,11 +52,14 @@ export default {
   },
   computed: {
     tasks() {
-      return this.$store.state.tasks
+      return this.$store.getters.filteredTasks
     },
     labels() {
       return this.$store.state.labels
     },
+    filter() {
+      return this.$store.state.filter
+    }
   },
   methods: {
     toggleTaskStatus(task) {
@@ -72,6 +86,12 @@ export default {
     getLabelText(id) {
       const label = this.$store.state.labels.filter(label => label.id === id)[0]
       return label ? label.text : ""
+    },
+    changeFilter(labelId){
+      this.$store.commit("changeFilter", {
+        filter:
+        labelId
+      })
     }
   }
 }
