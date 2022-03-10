@@ -4,12 +4,18 @@
       alt="Vue logo"
       src="./assets/logo.png"
     >
+    <check-list />
   </div>
 </template>
 
 <script>
+import CheckList from '@/components/CheckList.vue';
+
 export default {
   name: 'App',
+  components: {
+    CheckList,
+  },
 };
 </script>
 
