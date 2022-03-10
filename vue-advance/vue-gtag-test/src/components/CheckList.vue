@@ -40,7 +40,7 @@ export default {
       this.$gtag.event('click', {
         event_category: 'checkList',
         event_label: 'checkedItem',
-        value: item.text,
+        item_title: item.text,
       });
     },
   },
