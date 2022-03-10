@@ -4,7 +4,7 @@ import VueGtag from 'vue-gtag';
 
 Vue.use(VueGtag, {
   config: {
-    id: 'G-XPDQ09HE27',
+    id: process.env.VUE_APP_GOOGLE_ANALYTICS_ID,
   },
 });
 
