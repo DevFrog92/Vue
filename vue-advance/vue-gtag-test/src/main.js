@@ -4,7 +4,7 @@ import VueGtag from 'vue-gtag';
 
 Vue.use(VueGtag, {
   config: {
-    id: 'G-67XZRFYD0V',
+    id: 'G-XPDQ09HE27',
   },
 });
 
