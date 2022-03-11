@@ -1,21 +1,25 @@
 <template>
   <div id="app">
+    <router-link to="/">
+      Home
+    </router-link> |
+    <router-link to="/checklist">
+      CheckList
+    </router-link> |
+    <router-link to="/signup">
+      Signup
+    </router-link>
     <img
       alt="Vue logo"
       src="./assets/logo.png"
     >
-    <check-list />
+    <router-view />
   </div>
 </template>
 
 <script>
-import CheckList from '@/components/CheckList.vue';
-
 export default {
   name: 'App',
-  components: {
-    CheckList,
-  },
 };
 </script>
 
