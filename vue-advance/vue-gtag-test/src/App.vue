@@ -8,6 +8,9 @@
     </router-link> |
     <router-link to="/signup">
       Signup
+    </router-link> |
+    <router-link to="/gamebutton">
+      GameButton
     </router-link>
     <img
       alt="Vue logo"

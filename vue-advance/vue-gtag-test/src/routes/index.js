@@ -18,6 +18,11 @@ const routes = [
     path: '/signup',
     name: 'Signup',
     component: () => import('@/components/Signup.vue'),
+  },
+  {
+    path: '/gamebutton',
+    name: 'GameButton',
+    component: () => import('@/components/GameButton.vue'),
   }
 ];
 const router = new VueRouter({
