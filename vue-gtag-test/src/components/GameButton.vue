@@ -15,6 +15,10 @@
         </button>
       </li>
     </ul>
+
+    <button @click="buttonClick">
+      button click
+    </button>
   </section>
 </template>
 
@@ -61,6 +65,15 @@ export default {
         event_category: 'game_finish',
         event_label: game,
         game_status: 'finish',
+      });
+    },
+    buttonClick() {
+      this.$gtag.event('click', {
+        event_category: 'game_start',
+        event_label: 'tower',
+        button_category: 'game',
+        game_status: 'start',
+        clicked_button_label: 'tower',
       });
     },
   },
