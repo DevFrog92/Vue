@@ -23,6 +23,11 @@ const routes = [
     path: '/gamebutton',
     name: 'GameButton',
     component: () => import('@/components/GameButton.vue'),
+  },
+  {
+    path: '/auth',
+    name: 'Auth',
+    component: () => import('@/components/Form.vue'),
   }
 ];
 const router = new VueRouter({

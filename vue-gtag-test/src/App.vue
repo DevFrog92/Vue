@@ -11,6 +11,9 @@
     </router-link> |
     <router-link to="/gamebutton">
       GameButton
+    </router-link> |
+    <router-link to="/auth">
+      Auth
     </router-link>
     <img
       alt="Vue logo"
