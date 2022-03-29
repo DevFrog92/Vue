@@ -4,7 +4,9 @@
 		:disabled="disabled"
 		:type="type"
 		@click="handleClick"
-	></button>
+	>
+		<slot />
+	</button>
 </template>
 
 <script>
