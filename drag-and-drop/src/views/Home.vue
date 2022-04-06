@@ -1,11 +1,8 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-  </div>
+  <div class="home">Vue.js에서 활용할 수 있는 다양한 컴포넌트 연습장</div>
 </template>
 
 <script>
-// @ is an alias to /src
 export default {
   name: 'Home',
 };
