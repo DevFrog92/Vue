@@ -19,6 +19,24 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/Template.vue'),
   },
+  {
+    path: '/guide',
+    name: 'Guide',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/Guide.vue'),
+  },
+  {
+    path: '/naver/jr',
+    name: 'JrNaver',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/JrNaver.vue'),
+  },
 ];
 
 const router = new VueRouter({

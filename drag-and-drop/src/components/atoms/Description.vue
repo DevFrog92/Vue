@@ -30,6 +30,7 @@ export default {
   margin-top: 1rem;
   text-align: right;
   width: 100%;
+  pointer-events: none;
 }
 
 .text-bold {

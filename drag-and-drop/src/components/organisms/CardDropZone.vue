@@ -1,6 +1,19 @@
 <template>
   <section class="card-drop-zone-wrapper">
-    <card :game="game" shape="rect" />
+    <span
+      ref="dropZoneWithCard"
+      v-for="item in 2"
+      :key="item"
+      class="drop-zone-card"
+    >
+      <card
+        :key="item"
+        column="cardDropZone"
+        :game="game"
+        shape="rect"
+        @dropped="dropped"
+      />
+    </span>
   </section>
 </template>
 
@@ -19,6 +32,11 @@ export default {
       },
     };
   },
+  methods: {
+    dropped(element) {
+      console.log('dropped card drop zone', element);
+    },
+  },
 };
 </script>
 
@@ -28,5 +46,12 @@ export default {
   width: 300px;
   border: 1px solid;
   padding: 1rem;
+}
+
+.drop-zone-card {
+  display: block;
+  /* margin-bottom: 0.5rem; */
+  overflow-x: hidden;
+  position: relative;
 }
 </style>

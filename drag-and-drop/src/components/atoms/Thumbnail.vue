@@ -29,5 +29,6 @@ export default {
   border-radius: 50%;
   width: 40px;
   height: 40px;
+  pointer-events: none;
 }
 </style>
