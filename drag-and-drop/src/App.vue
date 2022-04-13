@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Nav />
-    <router-view />
+    <div class="top-padding">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -20,5 +22,11 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+#app {
+  overflow: hidden;
+}
+.top-padding {
+  padding-top: 76px;
 }
 </style>

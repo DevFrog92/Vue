@@ -37,6 +37,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/JrNaver.vue'),
   },
+  {
+    path: '/guide/emoticon',
+    name: 'Emoticon',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/Emoticon.vue'),
+  },
 ];
 
 const router = new VueRouter({
