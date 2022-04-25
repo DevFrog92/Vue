@@ -43,6 +43,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/Emoticon.vue'),
   },
+  {
+    path: '/progress',
+    name: 'ProgressBar',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/ProgressBar.vue'),
+  },
 ];
 
 const router = new VueRouter({

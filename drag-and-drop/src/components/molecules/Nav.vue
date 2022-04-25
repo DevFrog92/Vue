@@ -4,7 +4,8 @@
     <router-link to="/template">template</router-link> |
     <router-link to="/guide">Guide</router-link> |
     <router-link to="/naver/jr">Naver</router-link> |
-    <router-link to="/guide/emoticon">emoticon</router-link>
+    <router-link to="/guide/emoticon">emoticon</router-link> |
+    <router-link to="/progress">progress bar</router-link>
   </nav>
 </template>
 
