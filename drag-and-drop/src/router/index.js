@@ -55,6 +55,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/Coin.vue'),
   },
+  {
+    path: '/splash',
+    name: 'Splash',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/Splash.vue'),
+  },
 ];
 
 const router = new VueRouter({
