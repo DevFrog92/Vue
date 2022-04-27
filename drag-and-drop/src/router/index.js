@@ -49,6 +49,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/ProgressBar.vue'),
   },
+  {
+    path: '/coin',
+    name: 'Coin',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/Coin.vue'),
+  },
 ];
 
 const router = new VueRouter({
