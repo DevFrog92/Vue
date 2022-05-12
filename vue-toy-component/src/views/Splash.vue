@@ -8,7 +8,7 @@
       <div class="circle divide left"></div>
       <div class="circle divide right"></div>
       <div class="circle logo pulse">
-        <img src="@/assets/images/naver/mini-main.png" alt="" class="logo" />
+        <!-- <img src="@/assets/images/naver/mini-main.png" alt="" class="logo" /> -->
       </div>
     </div>
   </section>
@@ -39,7 +39,7 @@ export default {
 .splash_wrapper {
   width: 100vw;
   height: 100vh;
-  background-color: #eee;
+  background-color: #29292e;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,8 +47,10 @@ export default {
 
 .circle_wrapper {
   position: relative;
-  width: 13vw;
-  height: 13vw;
+  width: 72px;
+  height: 72px;
+  min-width: 72px;
+  min-height: 72px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,8 +60,8 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  max-width: 80px;
-  max-height: 80px;
+  max-width: 96px;
+  max-height: 96px;
   border-radius: 50%;
 }
 
@@ -79,53 +81,53 @@ export default {
 }
 
 .circle:nth-of-type(1) {
-  background-color: rgb(124, 135, 231);
+  background-color: #6951ff;
   transform-origin: left center;
   transform: scale(1);
-  animation: 0.3s ease-out 0.05s forwards fadeOutToLeft;
+  animation: 0.3s ease-out 0.3s forwards fadeOutToLeft;
 }
 
 .circle:nth-of-type(2) {
-  background-color: rgb(85, 85, 233);
+  background-color: #6a94ff;
   transform-origin: right center;
   transform: scale(0);
-  animation: 0.3s ease-out 0.185s forwards fadeInToLeft;
+  animation: 0.3s ease-out 0.435s forwards fadeInToLeft;
 }
 
 .circle:nth-of-type(3) {
-  background-color: rgb(85, 85, 233);
+  background-color: #6a94ff;
   transform-origin: top center;
   transform: scale(0);
-  animation: 0.3s ease-out 0.65s forwards fadeOutToTop;
+  animation: 0.3s ease-out 0.9s forwards fadeOutToTop;
 }
 
 .circle:nth-of-type(4) {
-  background-color: rgb(25, 52, 187);
+  background-color: #2765ff;
   transform: scale(0);
   transform-origin: bottom center;
-  animation: 0.3s ease-out 0.8s forwards fadeInToTop;
+  animation: 0.3s ease-out 1.05s forwards fadeInToTop;
 }
 
 .circle:nth-of-type(5) {
-  background-color: rgb(64, 31, 194);
+  background-color: #38d9a9;
   transform: scale(0);
   opacity: 0.7;
-  animation: 0.6s ease-out 1.25s forwards moveToRight;
+  animation: 0.6s ease-out 1.5s forwards moveToRight;
 }
 
 .circle:nth-of-type(6) {
-  background-color: rgb(25, 52, 187);
+  background-color: #2765ff;
   transform: scale(0);
-  animation: 0.6s ease-out 1.25s forwards moveToLeft;
+  animation: 0.6s ease-out 1.5s forwards moveToLeft;
 }
 
 .circle:nth-of-type(7) {
-  background-color: rgb(128, 50, 184);
+  background-color: #6951ff;
   transform: scale(1);
   opacity: 0;
   z-index: 1;
   transform-origin: center center;
-  animation: 2.35s ease-in-out 1.65s forwards pulse;
+  animation: 2s ease-in-out 1.95s forwards pulse;
 }
 
 .circle:nth-of-type(7) img {
@@ -133,18 +135,18 @@ export default {
   z-index: 1;
   transform: scale(1);
   transform-origin: center center;
-  animation: 2.35s ease-in-out 1.65s forwards appear;
+  animation: 2s ease-in-out 1.95s forwards appear;
 }
 
 .circle:nth-of-type(7)::before {
   position: absolute;
   content: '';
-  border: 1px solid rgb(158, 76, 239);
+  background-color: #6951ff;
   width: 100%;
   opacity: 0;
   height: 100%;
   border-radius: 50%;
-  animation: 0.5s ease-out 2.6s forwards wave;
+  animation: 0.7s ease-out 2 2.4s forwards wave;
 }
 
 @keyframes fadeOutToLeft {
@@ -238,31 +240,39 @@ export default {
 
 @keyframes pulse {
   0% {
-    opacity: 1;
+    opacity: 0.8;
     transform: scale(1);
   }
   10% {
     opacity: 1;
 
-    transform: scale(2.9);
-  }
-
-  40% {
-    opacity: 1;
-
-    transform: scale(2.9);
+    transform: scale(1.4);
   }
 
   50% {
     opacity: 1;
 
-    transform: scale(3);
+    transform: scale(1.4);
+  }
+
+  /* 50% {
+    opacity: 1;
+
+    transform: scale(1.6);
   }
 
   80% {
     opacity: 1;
 
-    transform: scale(2.8);
+    transform: scale(1.4);
+  } */
+
+  /* 임시 과정 */
+  /* 전체 프레임이 정지되면 사용자가 느끼기에 이상하게 느낄 수 있다.*/
+  80% {
+    opacity: 1;
+
+    transform: scale(1.4);
   }
 
   100% {
@@ -278,7 +288,7 @@ export default {
     transform: scale(1);
   }
   100% {
-    transform: scale(1.7);
+    transform: scale(2);
     opacity: 0;
   }
 }
