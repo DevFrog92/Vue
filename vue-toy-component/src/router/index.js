@@ -67,6 +67,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/DataScopeTest.vue'),
   },
+  {
+    path: '/spinner',
+    name: 'Spinner',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/Spinner.vue'),
+  },
 ];
 
 const router = new VueRouter({
