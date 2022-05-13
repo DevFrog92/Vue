@@ -8,7 +8,7 @@
       <div class="circle divide left"></div>
       <div class="circle divide right"></div>
       <div class="circle logo pulse">
-        <!-- <img src="@/assets/images/naver/mini-main.png" alt="" class="logo" /> -->
+        <img src="@/assets/logo.png" alt="logo" class="logo" />
       </div>
     </div>
   </section>
@@ -72,8 +72,8 @@ export default {
 }
 
 .circle .logo {
-  width: 50%;
-  height: 50%;
+  width: 48px;
+  height: 48px;
 }
 
 .circle.pulse {
@@ -127,15 +127,15 @@ export default {
   opacity: 0;
   z-index: 1;
   transform-origin: center center;
-  animation: 2s ease-in-out 1.95s forwards pulse;
+  animation: 2.05s ease-in-out 1.95s forwards pulse;
 }
 
 .circle:nth-of-type(7) img {
   opacity: 0;
   z-index: 1;
-  transform: scale(1);
+  transform: scale(0.9);
   transform-origin: center center;
-  animation: 2s ease-in-out 1.95s forwards appear;
+  animation: 2.05s ease-in-out 1.95s forwards appear;
 }
 
 .circle:nth-of-type(7)::before {
@@ -146,7 +146,7 @@ export default {
   opacity: 0;
   height: 100%;
   border-radius: 50%;
-  animation: 0.7s ease-out 2 2.4s forwards wave;
+  animation: 0.65s ease-out 2 2.4s forwards wave;
 }
 
 @keyframes fadeOutToLeft {
@@ -249,32 +249,47 @@ export default {
     transform: scale(1.4);
   }
 
-  50% {
+  20% {
     opacity: 1;
 
-    transform: scale(1.4);
+    transform: scale(1.42);
   }
 
-  /* 50% {
+  24% {
     opacity: 1;
 
-    transform: scale(1.6);
+    transform: scale(1.45);
+  }
+
+  27% {
+    opacity: 1;
+
+    transform: scale(1.42);
+  }
+
+  57% {
+    opacity: 1;
+
+    transform: scale(1.42);
+  }
+
+  60% {
+    opacity: 1;
+
+    transform: scale(1.45);
+  }
+
+  65% {
+    opacity: 1;
+
+    transform: scale(1.42);
   }
 
   80% {
     opacity: 1;
 
-    transform: scale(1.4);
-  } */
-
-  /* 임시 과정 */
-  /* 전체 프레임이 정지되면 사용자가 느끼기에 이상하게 느낄 수 있다.*/
-  80% {
-    opacity: 1;
-
-    transform: scale(1.4);
+    transform: scale(1.41);
   }
-
   100% {
     opacity: 1;
 
@@ -295,27 +310,60 @@ export default {
 
 @keyframes appear {
   0% {
-    opacity: 0;
+    opacity: 0.8;
+    transform: scale(0.8);
   }
-  25% {
+  10% {
     opacity: 1;
-  }
-  40% {
-    opacity: 1;
+
     transform: scale(1);
   }
-  41% {
-    transform: scale(1.01);
-  }
-  75% {
+
+  20% {
     opacity: 1;
+
     transform: scale(1);
   }
-  95% {
+
+  24% {
+    opacity: 1;
+
+    transform: scale(1.05);
+  }
+
+  27% {
+    opacity: 1;
+
+    transform: scale(1.03);
+  }
+
+  57% {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+
+  59% {
+    opacity: 1;
+
+    transform: scale(1.05);
+  }
+
+  65% {
+    opacity: 1;
+
+    transform: scale(1.03);
+  }
+
+  80% {
+    opacity: 1;
+
     transform: scale(1);
   }
   100% {
-    opacity: 0;
+    opacity: 1;
+
+    transform: scale(0);
   }
 }
 </style>
