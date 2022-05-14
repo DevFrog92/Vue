@@ -15,3 +15,6 @@ Vue.js는 앵귤러의 양방향 데이터 바인딩과 리엑트의 가삼 DOM�
     - $event.stopPropagation()
   - capture
   - target
+
+Chapter04
+- Reusable component
