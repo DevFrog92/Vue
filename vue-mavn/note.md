@@ -18,3 +18,8 @@ Vue.js는 앵귤러의 양방향 데이터 바인딩과 리엑트의 가삼 DOM�
 
 Chapter04
 - Reusable component
+- global & local component
+- props & emit & event bus
+  - `event.$emit`, `event.$on`, `event.$once(한번만 이벤트 버스를 구독한다.)`, `event.$off`
+- slot
+  - unnamed slot, named slot, scoped slot -> v-slot

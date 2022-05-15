@@ -5,6 +5,9 @@
         <p v-for="item in items" :key="item">{{ item }}</p>
       </template>
     </travel-list>
+    <travel-list #default="{items}" :items="cities">
+        <p v-for="item in items" :key="item">{{ item }}</p>
+    </travel-list>
   </div>
 </template>
 
