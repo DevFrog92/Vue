@@ -79,6 +79,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/HorizontalScroll.vue'),
   },
+  {
+    path: '/circleTimer',
+    name: 'CircleTimer',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/CircleTimer.vue'),
+  },
 ];
 
 const router = new VueRouter({

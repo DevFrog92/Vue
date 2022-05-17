@@ -10,7 +10,8 @@
     <router-link to="/splash">splash</router-link> |
     <router-link to="/datascope">data scope</router-link> |
     <router-link to="/spinner">spinner</router-link> |
-    <router-link to="/horizontalScroll">horizontal scroll</router-link>
+    <router-link to="/horizontalScroll">horizontal scroll</router-link> |
+    <router-link to="/circleTimer">circle timer</router-link>
   </nav>
 </template>
 
