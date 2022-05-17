@@ -9,7 +9,8 @@
     <router-link to="/coin">coin</router-link> |
     <router-link to="/splash">splash</router-link> |
     <router-link to="/datascope">data scope</router-link> |
-    <router-link to="/spinner">spinner</router-link>
+    <router-link to="/spinner">spinner</router-link> |
+    <router-link to="/horizontalScroll">horizontal scroll</router-link>
   </nav>
 </template>
 

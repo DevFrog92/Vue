@@ -73,6 +73,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/Spinner.vue'),
   },
+  {
+    path: '/horizontalScroll',
+    name: 'HorizontalScroll',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/HorizontalScroll.vue'),
+  },
 ];
 
 const router = new VueRouter({
