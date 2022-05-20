@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <select name="cities" v-model="selectedCity" multiple>
+      <option value="" disabled> 여행하고 싶은 도시를 선택하세요</option>
+      <option>서울</option>
+      <option>대구</option>
+      <option>광주</option>
+      <option>부산</option>
+      <option>안동</option>
+    </select>
+    <span>선택된 도시: {{ selectedCity }}</span>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+  new Vue({
+      el: "#app",
+      data() {
+        return {
+          selectedCity: []
+        }
+      },
+      computed: {
+        totalPrice() {
+          let totalAmount = 0
+          this.selectedCompanies.forEach(selectedCompany => totalAmount += selectedCompany.price)
+
+          return totalAmount
+        }
+      },
+      filters: {
+        currency(value) {
+          return new Intl.NumberFormat(
+            "ko-kr",
+            {style: "decimal"}
+          ).format(value)
+        }
+      },
+      methods: {
+        selectAll() {
+          this.selectedCompanies = this.companies
+        },
+        reset() {
+          this.selectedCompanies = []
+        }
+      }
+    })
+  </script>
+</body>
+</html>
