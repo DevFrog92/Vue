@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check box example</title>
+</head>
+<body>
+  <div id="app">
+    <span>노트북</span> <br>
+    <ul>
+      <li v-for="(company, index) in companies" :key="index">
+        <input type="checkbox" :value="company" v-model="selectedCompanies">
+        {{ company.name }}
+      </li>
+    </ul>
+    <button @click="selectAll">모두 선택</button>
+    <button @click="reset">모두 해제</button>
+    <div>
+      <ul>
+        <li v-for="(selectedCompany, index) in selectedCompanies" :key="index">
+          <strong>{{ selectedCompany.name }}</strong> <strong>{{ selectedCompany.product }}</strong>
+          <strong>{{ selectedCompany.price | currency }}</strong>
+        </li>
+      </ul>
+    </div>
+    <p>합계 : {{ totalPrice | currency }}원</p>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          companies:[
+            {name: "LG", product: "LG전자 2018 그램", price: 1402000},
+            {name: "SAMSUNG", product: "SAMSUNG전자 2020 이온", price: 2002000},
+            {name: "ASUS", product: "ASUS 2021 YOGA", price: 1800000},
+            {name: "Apply", product: "2020 M1 MacBook pro", price: 2400000},
+            {name: "Lenovo", product: "Lenovo think pad", price: 132000},
+          ],
+          selectedCompanies: []
+        }
+      },
+      computed: {
+        totalPrice() {
+          let totalAmount = 0
+          this.selectedCompanies.forEach(selectedCompany => totalAmount += selectedCompany.price)
+
+          return totalAmount
+        }
+      },
+      filters: {
+        currency(value) {
+          return new Intl.NumberFormat(
+            "ko-kr",
+            {style: "decimal"}
+          ).format(value)
+        }
+      },
+      methods: {
+        selectAll() {
+          this.selectedCompanies = this.companies
+        },
+        reset() {
+          this.selectedCompanies = []
+        }
+      }
+    })
+  </script>
+</body>
+</html>
