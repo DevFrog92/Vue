@@ -33,6 +33,19 @@ const routes = [
     redirect: "/",
   },
   {
+    path: "/board",
+    component: Board,
+    children: [
+      {
+        path: "graph",
+        components: {
+          default: Graph,
+          a: Graph2,
+        },
+      },
+    ],
+  },
+  {
     path: "/admin",
     component: Admin,
     children: [
@@ -40,14 +53,6 @@ const routes = [
       { path: "edit", name: "productEdit", component: ProductEdit },
       { path: "insert", name: "productInsert", component: ProductInsert },
     ],
-  },
-  {
-    path: "/board",
-    components: {
-      default: Board,
-      first: Graph,
-      second: Graph2,
-    },
   },
 ];
 

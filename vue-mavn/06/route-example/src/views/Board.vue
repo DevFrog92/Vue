@@ -2,8 +2,7 @@
   <section>
     <h1>Board</h1>
     <router-view></router-view>
-    <router-view name="first"></router-view>
-    <router-view name="second"></router-view>
+    <router-view name="a"></router-view>
     <p>board page</p>
   </section>
 </template>
@@ -12,4 +11,10 @@
 export default {};
 </script>
 
-<style></style>
+<style scoped>
+section {
+  height: 100vh;
+  background-color: #eee;
+  width: 100vw;
+}
+</style>
