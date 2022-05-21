@@ -3,7 +3,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  created() {
+    console.log("this is login page");
+  },
+};
 </script>
 
 <style></style>

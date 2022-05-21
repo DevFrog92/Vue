@@ -54,6 +54,10 @@ const routes = [
       { path: "edit", name: "productEdit", component: ProductEdit },
       { path: "insert", name: "productInsert", component: ProductInsert },
     ],
+    beforeEnter(to, from, next) {
+      console.log("beforeEnter", to, from);
+      next("/login");
+    },
   },
   {
     path: "/login",

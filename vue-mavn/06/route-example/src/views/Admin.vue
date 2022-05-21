@@ -10,10 +10,10 @@
 
 <script>
 export default {
-  beforeRouteEnter(to, from, next) {
-    console.log(`beforeRouteEnter`, to, from);
-    next();
-  },
+  // beforeRouteEnter(to, from, next) {
+  //   console.log(`beforeRouteEnter`, to, from);
+  //   next();
+  // },
   beforeRouteUpdate(to, from, next) {
     console.log(`beforeRouteUpdate`, to, from);
     next();
