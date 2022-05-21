@@ -9,6 +9,7 @@ import ProductInsert from "../views/ProductInsert.vue";
 import Board from "../views/Board.vue";
 import Graph from "../views/Graph.vue";
 import Graph2 from "../views/Graph2.vue";
+import Login from "../views/Login.vue";
 
 Vue.use(VueRouter);
 
@@ -53,6 +54,11 @@ const routes = [
       { path: "edit", name: "productEdit", component: ProductEdit },
       { path: "insert", name: "productInsert", component: ProductInsert },
     ],
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
   },
 ];
 
