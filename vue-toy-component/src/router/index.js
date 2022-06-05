@@ -85,6 +85,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/CircleTimer.vue'),
   },
+  {
+    path: '/circleLevel',
+    name: 'CircleLevel',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/CircleLevel.vue'),
+  },
 ];
 
 const router = new VueRouter({
