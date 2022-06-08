@@ -13,6 +13,7 @@
     <router-link to="/horizontalScroll">horizontal scroll</router-link> |
     <router-link to="/circleTimer">circle timer</router-link> |
     <router-link to="/circleLevel">circle level</router-link> |
+    <router-link to="/dropdown">drop down</router-link> |
   </nav>
 </template>
 

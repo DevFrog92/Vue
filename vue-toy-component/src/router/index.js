@@ -91,6 +91,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/CircleLevel.vue'),
   },
+  {
+    path: '/dropdown',
+    name: 'DropDown',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/DropDown.vue'),
+  },
 ];
 
 const router = new VueRouter({

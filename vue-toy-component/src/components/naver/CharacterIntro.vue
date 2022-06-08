@@ -70,7 +70,7 @@ export default {
         }
       });
     },
-    setPosition(y) {
+    setPosition() {
       console.log('section', this.index, 'animation start');
 
       // console.log(window.scrollY - y);
