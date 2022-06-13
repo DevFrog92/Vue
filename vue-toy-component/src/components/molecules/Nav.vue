@@ -14,6 +14,7 @@
     <router-link to="/circleTimer">circle timer</router-link> |
     <router-link to="/circleLevel">circle level</router-link> |
     <router-link to="/dropdown">drop down</router-link> |
+    <router-link to="/button">button</router-link> |
   </nav>
 </template>
 

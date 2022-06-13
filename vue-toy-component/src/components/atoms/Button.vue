@@ -37,4 +37,31 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+button {
+  margin-bottom: 1rem;
+  width: 300px;
+  height: 52px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.primary {
+  background-color: rgb(54, 112, 205);
+  border: 1px solid rgb(54, 112, 205);
+  color: var(--white);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .primary:hover {
+    background-color: rgb(27, 101, 221);
+    border: 1px solid rgb(27, 101, 221);
+  }
+
+  .primary:active {
+    background-color: rgb(27, 101, 221);
+    border: 1px solid rgb(27, 101, 221);
+  }
+}
+</style>

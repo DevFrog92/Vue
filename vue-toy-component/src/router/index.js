@@ -97,6 +97,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/DropDown.vue'),
   },
+  {
+    path: '/button',
+    name: 'Button',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/Button.vue'),
+  },
 ];
 
 const router = new VueRouter({
