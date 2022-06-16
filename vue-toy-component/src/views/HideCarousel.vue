@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Lock />
     <div class="carousel" :style="`width: ${carouselWidth}px`">
       <div class="rail">
         <div
@@ -18,7 +19,11 @@
 </template>
 
 <script>
+import Lock from '@/components/atoms/Lock.vue';
 export default {
+  components: {
+    Lock,
+  },
   data() {
     return {
       containerWidth: 0,
@@ -85,6 +90,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .carousel {
