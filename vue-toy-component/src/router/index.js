@@ -103,6 +103,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/Button.vue'),
   },
+  {
+    path: '/hide/carousel',
+    name: 'HideCarousel',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/HideCarousel.vue'),
+  },
 ];
 
 const router = new VueRouter({
