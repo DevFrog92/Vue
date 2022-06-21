@@ -1,5 +1,14 @@
 <template>
   <section class="drop-down-container">
+    <div class="container">
+      <p class="number">1</p>
+      <img src="@/assets/icons/drop-down-icon.svg" alt="drop down icon" />
+      <p class="desc">
+        진짜 <br />
+        자극적이지 <br />
+        않다.
+      </p>
+    </div>
     <div class="drop-down">
       <p class="selected-option">
         {{ selectedOption }}
@@ -117,5 +126,16 @@ export default {
       pointer-events: none;
     }
   }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.container img {
+  margin: 9.5px 0;
 }
 </style>
