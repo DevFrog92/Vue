@@ -109,6 +109,16 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/HideCarousel.vue'),
   },
+  {
+    path: '/iob',
+    name: 'IntersectionObserver',
+    component: () => import('@/views/IntersectionObserver.vue'),
+  },
+  {
+    path: '/swipe/carousel',
+    name: 'SwipeCarousel',
+    component: () => import('@/views/SwipeCarousel.vue'),
+  },
 ];
 
 const router = new VueRouter({
