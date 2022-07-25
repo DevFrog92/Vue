@@ -119,6 +119,11 @@ const routes = [
     name: 'SwipeCarousel',
     component: () => import('@/views/SwipeCarousel.vue'),
   },
+  {
+    path: '/clipboard',
+    name: 'ClipBoard',
+    component: () => import('@/views/ClipBoard.vue'),
+  },
 ];
 
 const router = new VueRouter({

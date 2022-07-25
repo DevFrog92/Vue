@@ -18,6 +18,7 @@
     <router-link to="/hide/carousel">hide carousel</router-link> |
     <router-link to="/iob">Iob</router-link> |
     <router-link to="/swipe/carousel">swipe carousel</router-link> |
+    <router-link to="/clipboard">clipboard</router-link> |
   </nav>
 </template>
 
